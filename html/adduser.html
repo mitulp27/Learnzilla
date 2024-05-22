@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learnzilla</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  
+                               <!-- font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+<link href="../css/signup.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="outer-back">
+   <div class="container-fluid main-div">
+    <div class="row">
+   	  <div class="left-part col-md-5 col-sm-12" >
+   	  	<h1>
+          Welcome !
+   	  	</h1>
+        <center><div class="logopart">
+          <img src="..\images\logofinal.png" >
+        <div class="logoname">Learnzilla</div></div></center>
+   	  </div>
+   	  <div class="right-part col-md-7">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-1"></div>
+               <div class="col-md-11 form-main">
+                <form method="post">
+                  <h2>Sign Up</h2>
+   	               	<p> <xmp>Sign Up Here</xmp> </p>
+                  
+   	               	<div class=" col-sm-12 col-md-12">
+                      <div class="row">
+
+                        <div class=" col-sm-10 col-md-5">
+                          <input type="number" id="enr" class="" name="enr">
+                          <label for="enr" id="enr-label">Enrollment No.</label>
+                       </div>
+
+                        <div class="col-md-5 col-sm-10">
+                         <input type="text" id="fname" name="uname">
+                         <label for="fname" id="fname-label">User Name</label>
+                        </div>
+                     
+                      </div>
+                     </div>
+                     <br/>
+                     <div class=" col-sm-12 col-md-12">
+                      <div class="row">
+                         Gender : &nbsp;<div class="custom-control custom-radio">
+                          <input type="radio" class="custom-control-input" id="defaultUnchecked" name="gender" value="male" checked>
+                          <label class="custom-control-label" for="defaultUnchecked">Male</label>&nbsp;
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" class="custom-control-input" id="defaultUnchecked1" name="gender" value="female">
+                          <label class="custom-control-label" for="defaultUnchecked1">Female</label>&nbsp;
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" class="custom-control-input" id="defaultUnchecked1" name="gender" value="other">
+                          <label class="custom-control-label" for="defaultUnchecked1">Other</label>
+                        </div>
+                      </div>
+                     </div>
+                     <br/>
+                     <div class=" col-sm-12 col-md-10">
+                      <input id="prof" class="col-sm-12" name="prof" type="text">
+                        <label for="prof" id="prof-label">Profession</label>
+                     </div>
+                     <div class="col-sm-12 col-md-12">
+                      <div class="row">
+                       <div class="col-sm-12 col-md-5">
+                        <input type="number" id="sem" class="" name="sem">
+                       <label for="sem" id="sem-label">Semester</label>
+                      </div>
+
+                      <div class=" col-sm-10 col-md-5">
+                          <input type="email" id="email" class="" name="email">
+                          <label for="email" id="email-label">Email Id</label>
+                       </div>
+                     </div> 
+                    </div>
+                    <div class="col-sm-12 col-md-12">
+                      <div class="row">
+                       <div class="col-sm-12 col-md-5">
+                        <input type="number" id="deptno" class="" name="deptno">
+                       <label for="deptno" id="deptno-label">Department No.</label>
+                      </div>
+                      <div class="col-sm-12 col-md-5">
+                        <input type="number" id="contact" class="" name="number">
+                       <label for="contact" id="contact-label">Contact Number</label>
+                      </div>
+                     </div> 
+                    </div>
+
+                    <div class="col-sm-12 col-md-12">
+                      <div class="row">
+                       <div class="col-sm-12 col-md-5">
+                        <input type="password" id="password" class="" name="pass">
+                       <label for="password" id="pass-label">Password</label>
+                      </div>
+                      <div class="col-sm-12 col-md-5">
+                        <input type="password" id="repassword" class="repass" name="repass">
+                       <label for="repassword" id="repass-label">Retype Password</label>
+                       <span id="pass-verify" style="color: #fff">status</span>
+                      </div>
+                     </div> 
+                    </div>
+                
+                      
+                    <button class="btn btn-primary btn-lg" id="signup" name="signup"> Submit </button>
+                  </form>
+              </div>
+            </div>
+         </div>
+   	  </div>
+    </div>
+ </div>
+</div>
+</body>
+<script src="../js/signup.js"></script>
+<script type="text/javascript">
+  var form=document.forms[0];
+
+  $(document).ready(function(){
+    $("#repassword,#password").keyup(function(){
+     $pass = $('#password').val();
+     $repass = $('#repassword').val();
+     if($pass.length >= 8&&$repass.length >= 8){
+     if($pass == $repass){
+        $("#pass-verify").html("<font color='green'>Password Matched </font>");
+     }
+     else{
+        $("#pass-verify").html("<font color='red'>Password not Matched </font>");
+     }
+    }else{
+      $("#pass-verify").html("<font color='red'>Minimum 8 characters. </font>");
+    }
+  });
+  });
+
+    $('#signup').click(function(){
+      var form=document.forms[0];
+      var uname=form.uname.value;
+      var enr=form.enr.value;
+      var email=form.email.value;
+      var prof=form.prof.value;
+      var deptno=form.dno.value;
+      var sem=form.sem.value;
+      var number=form.number.value;
+      var pass=form.pass.value;
+      var repass=form.repass.value;
+      var submit=form.signup.value;
+      
+      if(uname.length==0){
+          alert("Please Enter your Name");
+          form.uname.focus();
+      }else if(email.length==0){
+          alert("Please Enter your Email");
+          form.email.focus();
+      }else if(enr.length==0){
+          alert("Please Enter your Email");
+          form.enr.focus();
+      }else if(country.length==0){
+          alert("Please Select your country");
+          form.country.focus();
+      }else if(state.length==0){
+          alert("Please select your state");
+          form.state.focus();
+      }else if(city.length==0){
+          alert("Please select your city");
+          form.city.focus();
+      }else if(prof.length==0){
+          alert("Please enter your Profession");
+          form.prof.focus();
+      }else if(deptno.length==0){
+          alert("Please enter your department number");
+          form.deptno.focus();
+      }else if(sem.length==0){
+          alert("Please enter your Semester");
+          form.sem.focus();
+      }else if(number.length==0){
+          alert("Please enter your number");
+          form.number.focus();
+      }else if(pass.length==0){
+          alert("Please enter password");
+          form.pass.focus();
+      }else if(repass.length==0){
+          alert("Please Retype password");
+          form.repass.focus();
+      }else if(repass!=pass){
+          alert("Password do not match");
+          form.repass.focus();
+      }
+      else{
+            var details={
+              uname:uname,
+              enr:enr,
+              email:email,
+              gender:form.gender.value,
+              prof:prof,
+              deptno:deptno,
+              sem:sem,
+              number:number,
+              pass:pass,
+              repass:repass,
+              signup:signup,
+          };
+          $.ajax({
+              url:'register.php',
+              data:details,
+              type:"post",
+              success:function(result){
+                  if(result=="success"){
+                        window.alert('User added successfully.');
+                  }
+                  else{window.alert(result);}
+              }
+          });
+    }
+  });
+</script>
+</html>

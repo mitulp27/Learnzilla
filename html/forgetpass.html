@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forget Password</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style type="text/css">
+  *{
+    margin: 0px;
+    padding: 0px;
+  }
+  .box{
+    height: auto;
+    position:relative;
+        margin: 0px auto; 
+        border: 1px solid grey;
+        align-items: center;
+        padding: 20px;
+  }
+  .forgetpass{
+  }
+  .otpbox{
+    display: none;
+    transition: .5s;
+    animation: otpann .3s linear;
+  }
+input{
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 10px 5px;
+  background: white no-repeat;
+  background-image: linear-gradient(to bottom, #0073e6, #0073e6), linear-gradient(to bottom, silver, silver);
+  background-size: 0 2px, 100% 1px;
+  background-position: 50% 100%, 50% 100%;
+  transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+input:focus{
+  background-size: 100% 2px, 100% 1px;
+  outline: none;
+}
+.rightim{
+    position: absolute;
+    top: 10%;
+  height: auto;
+  width: 50%;
+  left: 5%;
+}
+.rightppart{
+  position: relative;
+  width: 50%;left: 50%;
+}
+@media screen and (max-width: 768px){
+  .rightim{
+    position: relative;
+    top: 10%;
+  min-height: 30vh;
+  width: 100%;
+  left: 5%;
+}
+.rightppart{
+  position: relative;
+  width: 100%;left: -5%;justify-content: center;
+}
+form{align-self: center;}
+.box{
+    height: auto;
+    position:relative;
+    border: none;
+    text-align: left;
+  }
+  }
+  </style>
+</head>
+<body>
+
+<div class="box col-md-7 mt-5 forgetpass">
+  
+  <div class="rightim"><h1 class="float-left">Forgot Password</h1><img src="https://cdn.dribbble.com/users/1843004/screenshots/6461948/forgot_pasword_2x.png" height="200px" width="300px"></div>
+ <div class="rightppart">   
+
+<form method="post">
+      <div class="col-md-11 mt-5 ml-4">
+        <font color="grey" size="3px">Enter The E-mail To Reset The Password</font>
+        <input type="email" name="email" placeholder="Xyz@example.com" id="email" autocomplete="off">
+        <span id="pass-verify" style="color: #fff"></span>
+      <input type="submit" value="Send Otp" class="fpass_smt btn btn-success  mt-3 col-md-6" name="Sub" id="Sub">
+      </div>
+ </form>
+<form method="post">
+     <div class="col-md-11 mt-4 ml-4">  
+        <font color="grey" size="3px">Enter The otp sended to your E-mail</font>
+        <input type="text" name="otp" placeholder="Enter Otp" id="otp" autocomplete="off">
+      <input type="submit" class="btn btn-primary mt-3 col-md-6" name="smtotp" id="smtotp" disabled="true">
+
+  </form>
+</div>
+
+</div>
+</body>
+<script>
+   $(document).ready(function(){
+      $('.fpass_smt').click(function(){
+          $('.otpbox').css("display","block");
+      });
+   });
+   $("#Sub").click(function(){
+        var email = $('#email').val();
+         $.ajax({
+           url:"forget.php",
+           type : 'post',
+           data : {email : email},
+           success :function(result){ 
+              if(result == "Email Sent to your registered email."){
+               window.alert("Email Sent to your registered email.");
+              }
+              if(result == "Email not Sent"){
+                window.alert("Email not Sent");
+                }  
+                if(result == "User not exist"){
+                window.alert("User not exist");
+                }   
+               else{
+                alert(result);
+               }
+           }
+          });
+         return false;
+});
+   $("#smtotp").click(function(){
+        var otp = $('#otp').val();
+         $.ajax({
+           url:"otp.php",
+           type : 'post',
+           data : {otp : otp},
+           success :function(result){ 
+              if(result == "Success"){
+               console.log("Success");
+               window.location.replace('reset.html');
+              }
+               else{
+                alert(result);
+               }
+           }
+          });
+         return false;
+});
+   $(document).ready(function(){
+    $("#otp").keyup(function(){
+     var otp = $('#otp').val();
+     if(otp.length == 6){
+      document.getElementById('smtotp').disabled=false;
+      $("#pass-verify").html("");
+    }
+  });
+  });
+</script>
+</html>

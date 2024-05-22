@@ -1,0 +1,66 @@
+body{
+		background: #99d6ff;
+		height: 100vh;user-select: none;
+		
+	}
+	h1{
+		font-size: 70px;
+		padding: auto;margin: auto;
+		border-radius: 7px;
+		color: #fff;align-self: center;
+	}
+	.data{
+		height: auto;
+		width: 100%;
+		background-color: #fff;
+		color: #444;text-align: center;justify-content: center;
+		border-radius: 8px;
+		border: 1px solid #fff;padding: 1%;font-size: 150%;
+	}
+	.data #ply{padding: 1%;border-radius: 10%;background-color: transparent;border: 1px solid #fff;color: #fff;cursor: pointer;}
+	.data #ply:active{border-color:'#444',background-color:'#fff',color:'#444';}
+	.data h2{
+		font-family: sans-serif;
+		padding-left: 25px;user-select: none;
+		padding-top: 30px;
+		font-size: 35px;
+
+	}	
+	.qdata{background-color: #fff;
+	font-family: sans-serif;
+		padding-left: 25px;user-select: none;
+		padding-bottom: 30px;
+		font-size: 25px;}
+	.data p{
+		padding-left: 110px;
+		font-size: 27px;user-select: none;
+	}
+	.butts{overflow: hidden;border: 1px solid #fff;background: transparent;}
+	.button:focus{outline: none;}
+	.button{
+
+		font-family: sans-serif;
+		background-color: white;
+		border:none;
+		color: green;
+		padding: 23px 35px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		border-radius: 12px;
+		font-size: 20px;
+		margin: 4px 2px;
+		transition: 0.4s;
+		cursor: pointer;
+	}
+	.button:hover{
+		background-color: #4CAF50;
+		color: white;
+	}
+	.title{text-align: center;}
+	input[type="file"]{display: none;}
+	.ques{text-align: center;background: #fff;padding: 10px 10px;}
+	label{padding: 10px 10px;border-radius: 50%;cursor: pointer;}
+	label:focus{background: #0f0;}
+	.option{cursor: pointer;}
+	.comtainer{width: 100%;border: 1px solid #000;}

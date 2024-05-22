@@ -1,0 +1,18 @@
+body{background-image: url(../images/cool-background.png);}
+img{height: 20vh;margin: 10px;z-index: 0;user-select: none;cursor: pointer;z-index: -1;}td,tr{text-align: center;align-items: center;}
+.tabs-850{display: none;}td{width: auto;z-index: -1;}
+@media only screen and (max-width: 850px){
+	.tabs-850{display: inline-block;width: 100%;top: 15%;position: absolute;z-index: -1;}
+	.tabs{display: none;}
+}
+@media only screen and (max-width: 1200px){
+	.tabs{top: 20%;position: absolute;}
+}
+.tabs{margin-top: 8%;position: absolute;width: 100%;z-index: -1;}
+#h2{text-align: center;justify-content: center;display: flex;font-weight: bold;z-index: 1;left: 20vw;}#h1{background: red;color: #fff;padding: 1%;width: 20vw;text-align: center;left: 0;}
+header{font-size: 4vh;position: fixed;width: auto;float: left;}
+.title{width: 100%;margin: 0;height: auto;position: fixed;z-index: 10;text-align: center;display: flex;justify-content: center;}
+.drop{background: red;width: 20vw;padding: 1%;text-align: center;color: #fff;user-select: none;margin-left: 80%;float: right;cursor: pointer;}
+.op1,.op2,.op3{padding: 2%;font-weight: bold;z-index: 10;}
+.drop-data{display: inline-block;z-index: 10;}
+.drop-data{display: none;z-index: 10;}

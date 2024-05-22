@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Assignment</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+<div class="title">
+<h1>Assignment</h1></div>
+<div class="data">
+	<header>Subject</header><input type="text" name="sub" id="sub">
+	<h2> Add Question</h2>
+	<textarea id="ques" rows="5" cols="100"></textarea>
+</div>
+<input type="submit" name="sub" class="button">
+<script type="text/javascript">
+	$(document).ready(function() {
+	$('.button').click(function() {
+		var data = $('#ques').val();
+		var sub = $('.button').val();
+		var subject = $('#sub').val();
+		$.ajax({
+           url:"file.php",
+           type : 'post',
+           data : {data:data,sub:sub,subject:subject}
+          });
+	});
+});
+</script>
+</body>
+</html>

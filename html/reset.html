@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+	  	.box{
+        margin: 0px auto;
+        border: 1px solid grey;
+        align-items: center;
+        padding: 20px;
+	}
+input{
+  display: block;
+  width: 50%;
+  border: 0;
+  padding: 10px 5px;
+  background: white no-repeat;
+  background-image: linear-gradient(to bottom, #0073e6, #0073e6), linear-gradient(to bottom, silver, silver);
+  background-size: 0 2px, 100% 1px;
+  background-position: 50% 100%, 50% 100%;
+  transition: background-size 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+input:focus{
+  background-size: 100% 2px, 100% 1px;
+  outline: none;
+}
+.rightim{
+		position: absolute;
+	height: 200px;
+	width: 300px;
+	right: 20px;
+}
+@media only screen and (max-width: 950px){
+  .container{
+      margin-top: 50px;
+  }
+  .rightim {z-index: 1;justify-content: center;align-self: center;}
+}
+</style>
+</head>
+<body>
+   <div class="box col-md-9 w-50 mt-5">
+	<div class="rightim"><img src="https://mybox.postaplus.com/img/icon_head_forget.png" height="250px" width="300px"></div>
+     <h1>Reset Password</h1>
+     <div class="container">
+<form method="post" >
+   	  	<font color="grey" size="3px">Enter New Password</font>
+   	  	<input type="password" name="newpass" id="newpass" placeholder="Enter New Password">
+   	  	<input type="password" name="newpass1" id="newpass1" placeholder="Confirm Password">
+        <span id="pass-verify" style="color: #fff"></span>
+   	  <input type="submit" class="btn btn-primary mt-3 col-md-6" name="smtupdate" id="smtupdate" disabled="true">
+  </form>
+   	  </div>
+    </div>
+</body>
+<script type="text/javascript">
+  $("#smtupdate").click(function(){
+        var pass = $('#newpass').val();
+         $.ajax({
+           url:"updatepass.php",
+           type : 'post',
+           data : {pass : pass},
+           success :function(result){ 
+              if(result == "Success"){
+               window.alert("Password Updated Successfully.");
+               location.replace('../');
+              }
+               else{
+                window.alert('Enter new password.');
+               }
+           }
+          });
+         return false;
+});
+  $(document).ready(function(){
+    $("#newpass1,#newpass").keyup(function(){
+     $pass = $('#newpass').val();
+     $repass = $('#newpass1').val();
+     if($pass.length >= 8&&$repass.length >= 8){
+     if($pass == $repass){
+        $("#pass-verify").html("<font color='green'>Password Matched</font><br>");
+        document.getElementById('smtupdate').disabled=false;
+     }
+     else{
+        $("#pass-verify").html("<font color='red'>Password not Matched</font>");
+     }
+    }else{
+      $("#pass-verify").html("<font color='red'>Minimum 8 characters.</font>");
+    }
+  });
+  });
+</script>
+</html>
