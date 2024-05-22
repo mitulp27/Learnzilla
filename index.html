@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learnzilla</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  
+                               <!-- font -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                     <!-- swal -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                  <!--  css -->
+<link href="css/login.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+  <div class="outer-back">
+   <div class="container-fluid main-div">
+    <div class="row">
+   	  <div class="left-part col-md-5 col-sm-12" >
+   	  	<center><h1>
+   	  		Welcome&nbsp;Back&nbsp;!
+   	  	</h1></center>
+        <center><div class="logopart">
+          <img src="images/logofinal.png">
+        <div class="logoname">Learnzilla</div>
+        </div></center>
+   	  </div>
+   	  <div class="right-part col-md-7" style="">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-1"></div>
+               <div class="col-md-11 form-main">
+                  <h2>Login</h2>
+   	               	<p> <xmp>login to start </xmp> </p>
+
+               <form id="loginform" method="post">
+                      <div class=" col-sm-12 col-md-11">
+                        <i class="fa fa-user usr-icn"></i>
+                        <input type="email" id="email" class="" name="em" autocomplete="off" value="">
+                        <label for="email" id="email-label">Email&nbsp;ID&nbsp;</label>
+                     </div>
+
+                <br/>
+
+                     <div class="col-sm-12 col-md-11">
+                      <i class="fa fa-lock usr-lock"></i>
+                        <input type="password" id="password" class="" name="ps" value="">
+                       <label for="password" id="pass-label">Password</label>
+                    </div>
+                      <a href="html/forgetpass.html" id="fp">Forget Password ? </a><br>
+                      <span id="pass-verify" style="color: #fff"></span><br>
+                    <button class="btn btn-primary btn-lg" id="login" value="Login" name="login">Login</button> 
+                  </form>
+              </div>
+            </div>
+         </div>
+   	  </div>
+    </div>
+ </div>
+</div>
+</body>
+<script>
+	  $("input#email").on({
+    keydown:function (e) {
+      if (e.which===32)
+        return false;
+    },
+    change:function () {
+      this.value=this.value.replace(/\s/g,"");
+    }
+  });
+  $("input#password").on({
+    keydown:function (e) {
+      if (e.which===32)
+        return false;
+    },
+    change:function () {
+      this.value=this.value.replace(/\s/g,"");
+    }
+  });
+  $(document).ready(function(){
+
+      if(email.value.length > 0){
+        $('#email-label').css({"color":"#fff","top":"-10px","left":"0px","font-size":".8em"});
+        $('#pass-label').css({"color":"#fff","top":"-10px","left":"0px","font-size":".8em"});
+
+      }
+       $('#email').focus(function(){
+       $('#email-label').css({"color":"#006699","top":"-10px","left":"0px","font-size":".8em"});
+       $('.usr-icn').css({"color":"#006699"});
+     });
+     $('#email').blur(function(){
+      $a = $('#email').val();
+      if($a.length == 0){
+       $('#email-label').css({"color":"lightgrey","top":"10px","left":"10px","font-size":"1em"});
+       $('.usr-icn').css({"color":"lightgrey"});
+      }
+     });
+
+     $('#password').focus(function(){
+       $('#pass-label').css({"color":"#006699","top":"-10px","left":"0px","font-size":".8em"});
+       $('.usr-lock').css({"color":"#006699"});
+     });
+     $('#password').blur(function(){
+      $a = $('#password').val();
+      if($a.length == 0){
+       $('#pass-label').css({"color":"lightgrey","top":"10px","left":"10px","font-size":"1em"});
+       $('.usr-lock').css({"color":"lightgrey"});
+      }
+     });
+  });
+      $("#login").click(function(){
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var login = $('#login').val();
+         $.ajax({
+           url:"html/authantication.php",
+           type : 'post',
+           data : {em : email , ps:password, sub:login},
+           success :function(result){
+              if(result == "validuser"){
+                window.location.replace("dash/");
+              }   
+               else{
+                window.alert('Invalid User');
+               }
+           }
+          });
+});
+    $(document).ready(function(){
+    $pass = $('#password').val();
+    $email=$('#email').val();
+    $('#password').focus(function() {
+    
+  });
+    $('#email','#password').keyup(function() {
+    if($pass.length >= 8&&$email.length>=1){
+      $('#pass-verify').html("");
+    }
+if($pass.length < 8){
+      $("#pass-verify").html("<font color='red'>Minimum 8 characters. </font>");
+    }
+    else{
+    	$("#pass-verify").html("");
+    }
+    });
+});
+</script>
+</html>
